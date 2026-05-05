@@ -18,8 +18,7 @@ data/sample_data.csv
 models/*.pkl
 models/model_metrics.json
 
-# Streamlit
-.streamlit/
+# Streamlit configs are tracked
 
 # OS generated files
 .DS_Store
