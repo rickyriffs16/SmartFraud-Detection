@@ -106,3 +106,28 @@ During your presentation, if you want to prove that your Predictor page works an
 **What happens?**
 If you hit **Predict**, the system should scream **FRAUD!** 🚨 
 This works because the model sees combinations of highly negative values for variables like V14, V12, V10, and V17 (which are known indicators of fraud), combined with a strangely high value for V4. It matches the "pattern of a thief" perfectly!
+
+---
+
+## 8. The "Vacation vs. Hacker" Example (Explaining Combinations)
+
+If your examiner asks: *"Does the model just look for one single spike or negative number to trigger fraud?"*
+
+Use this exact story to explain how Random Forests look at **combinations**:
+
+"To understand how the model works, let's pretend that **V4** represents the *Location* of the transaction, and **V14** represents the *Device* used.
+
+**Scenario A: The Single Spike (Legitimate)**
+Imagine I live in New York, but today I travel to Paris and buy a coffee. 
+- Because my location suddenly changed to Europe, **V4 experiences a massive spike**. 
+- However, I used my normal iPhone that I've had for 3 years, so **V14 stays completely normal**.
+- *The Model's Decision:* It sees the spike in V4, checks V14, sees the device is trusted, and realizes: *'He's just on vacation.'* **Verdict: Legitimate.**
+
+**Scenario B: The Combination (Fraud!)**
+Now imagine I am asleep in New York, but a hacker buys a coffee in Paris using stolen card details.
+- The location is Europe, so **V4 spikes**.
+- But this time, the transaction is coming from a brand-new, untrusted computer server in Russia, so **V14 plunges into the negative**.
+- *The Model's Decision:* It sees the spike in V4, checks V14, sees a highly suspicious device, and realizes: *'The location is weird AND the device is dangerous. This is a stolen card!'* **Verdict: FRAUD.**
+
+**Conclusion:**
+This is why Machine Learning is so powerful. A simple computer program might accidentally block your card while you are on vacation just because the location (V4) spiked. But our Random Forest model is smart enough to look at the **combinations of variables** to make highly accurate decisions without false alarms."
